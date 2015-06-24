@@ -9,13 +9,13 @@ namespace Tests
         [TestMethod]
         public void AnagramasTest()
         {
-            var input = "JEDI";
+            var input = "biro";
 
-            var solution = new Anagramas();
+            var solution = new Anagrams();
 
-            var anagramas = solution.GetAnagramas(input);
+            var anagramas = solution.GetAnagrams(input);
 
-            Assert.IsTrue(anagramas.Count == solution.GetFatorial(input.Length));
+            Assert.IsTrue(anagramas.Count == solution.GetFactorial(input.Length));
 
             Assert.IsTrue(solution.IsAllDistinct(anagramas));
         }
