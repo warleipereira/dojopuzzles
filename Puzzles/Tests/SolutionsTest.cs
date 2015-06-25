@@ -9,15 +9,15 @@ namespace Tests
         [TestMethod]
         public void AnagramasTest()
         {
-            var input = "biro";
+            var input = "ABCD";
 
             var solution = new Anagrams();
 
-            var anagramas = solution.GetAnagrams(input);
+            var anagrams = solution.GetAnagrams(input);
 
-            Assert.IsTrue(anagramas.Count == solution.GetFactorial(input.Length));
+            Assert.IsTrue(anagrams.Count == solution.GetMaxAnagrams(input), "Invalid number of anagrams");
 
-            Assert.IsTrue(solution.IsAllDistinct(anagramas));
+            Assert.IsTrue(solution.IsAllDistinct(anagrams), "There are repeated anagrams");
         }
     }
 }

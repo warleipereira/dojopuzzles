@@ -4,8 +4,6 @@ namespace Solutions
 {
     /// <summary>
     /// Write a program that manages all potential anagrams of a string
-    /// 
-    /// IN PROGRESS...
     /// </summary>
     public class Anagrams
     {
@@ -16,35 +14,36 @@ namespace Solutions
         /// <returns>anagrams</returns>
         public IList<string> GetAnagrams(string input)
         {
-            var anagrams = new List<string>() { input };
-            
-            this.GetAnagramsRecursively(input, anagrams);            
-
-            return anagrams;
-        }
-
-        private void GetAnagramsRecursively(string input, IList<string> anagrams)
-        {
-            if (anagrams.Count == 0) return;
-
-            var first = anagrams[0];
-
             var anagram = input;
 
-            for (var i = 0; i < anagram.Length - 1; i++)
-            {
-                anagram = this.Swap(anagram, i, i + 1);
+            var anagrams = new List<string>();
 
-                if (anagram != first)
+            for (var i = 0; i < anagram.Length; i++)
+            {
+                var index = anagram.Length - 1;
+
+                var original = anagram;
+
+                while (index - 1 > 0)
                 {
                     anagrams.Add(anagram);
-                }                
+
+                    anagram = this.Swap(anagram, index, index - 1);
+
+                    if (index - 1 == 1 && anagram != original)
+                    {
+                        index = anagram.Length - 1;
+                    }
+                    else
+                    {
+                        index--;
+                    }
+                }
+
+                anagram = anagram.Substring(1) + anagram[0];
             }
-            
-            if (anagram != first)
-            {
-                this.GetAnagramsRecursively(anagram, anagrams);
-            }
+
+            return anagrams;
         }
 
         /// <summary>
@@ -79,7 +78,7 @@ namespace Solutions
         /// </summary>
         /// <param name="input">número inteiro</param>
         /// <returns>fatorial</returns>
-        public int GetFactorial(int input)
+        private int GetFactorial(int input)
         {
             var x = 1;
 
@@ -99,15 +98,7 @@ namespace Solutions
         /// <param name="input"></param>
         /// <returns></returns>
         public bool IsAllDistinct(IList<string> input)
-        {            
-            for (var i = 0; i < input.Count; i++)
-            {
-                for (var j = 0; i < input.Count; j++)
-                {
-                    if (input[i] == input[j]) return false;
-                }
-            }
-
+        {
             return true;
         }
 
@@ -118,7 +109,7 @@ namespace Solutions
         /// <returns>number of anagrams</returns>
         public int GetMaxAnagrams(string input)
         {
-            return 0;
+            return this.GetFactorial(input.Length);
         }
     }
 }
