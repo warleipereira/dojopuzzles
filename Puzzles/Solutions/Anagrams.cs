@@ -92,16 +92,6 @@ namespace Solutions
             return x;
         }
 
-        /// <summary>        
-        /// Checks if all elements of the sequence are distinct
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        public bool IsAllDistinct(IList<string> input)
-        {
-            return true;
-        }
-
         /// <summary>
         /// Get the max number of anagrams for a given input string without repeated anagrams
         /// </summary>

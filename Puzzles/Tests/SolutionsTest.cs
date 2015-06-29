@@ -16,8 +16,14 @@ namespace Tests
             var anagrams = solution.GetAnagrams(input);
 
             Assert.IsTrue(anagrams.Count == solution.GetMaxAnagrams(input), "Invalid number of anagrams");
+        }
 
-            Assert.IsTrue(solution.IsAllDistinct(anagrams), "There are repeated anagrams");
+        [TestMethod]
+        public void CollatzTest()
+        {
+            var output = new Collatz().GetGreatestSequenceOrigin();
+
+            Assert.IsTrue(true);
         }
     }
 }
